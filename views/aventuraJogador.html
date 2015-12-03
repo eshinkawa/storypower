@@ -1,0 +1,140 @@
+<br>
+<!--div class="col-xs-18 col-sm-6 col-md-12" ng-controller="CombateCtrl"><h1>{{profile.valor | json}}</h1></div-->
+<script type="text/ng-template" id="myModalContent1.html" style="color:#000">
+   <div class="modal-body">
+       <h3 style="color:royalblue; text-align:center">{{dataFicha[0].nomePers}}</h3>
+       <h4 style="color:#000; text-align:center">Raça: {{dataFicha[0].racaPers}}</h4>
+       <h4 style="color:#000; text-align:center">Classe: {{dataFicha[0].classePers}}</h4>
+       <h4 style="color:#000; text-align:center">Tendência: {{dataFicha[0].tendPers}}</h4>
+   
+   </div>
+</script>
+<script type="text/ng-template" id="myModalContent2.html" style="color:#000">
+   <div class="modal-body">
+       <h3 style="color:royalblue; text-align:center">{{dataToken.nomeToken}}</h3>
+       <h4 style="color:#000; text-align:center">Raça: {{dataToken.racaToken}}</h4>
+       <h4 style="color:#000; text-align:center">Descrição: {{dataToken.descToken}}</h4>
+   
+   
+   </div>
+</script>
+<script type="text/ng-template" id="myModalContent3.html" style="color:#000">
+   <div class="modal-body" style="text-align:center">
+       <h3 style="color:royalblue; text-align:center">Escolha um teste</h3>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,4)" style="margin:5px">Dado de 4</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,6)" style="margin:5px">Dado de 6</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,8)" style="margin:5px">Dado de 8</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,10)" style="margin:5px">Dado de 10</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,12)" style="margin:5px">Dado de 12</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,16)" style="margin:5px">Dado de 16</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,20)" style="margin:5px">Dado de 20</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,30)" style="margin:5px">Dado de 30</button>
+       <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDados(1,100)" style="margin:5px">Dado de 100</button>
+       <br>
+       <h4 style="text-align:center; color:royalblue">Valor tirado:</h4><h5 style="text-align:center; color:#000">{{resultDados}}</h5><hr>
+       <button type="button" class="btn btn-warning btn-sm" ng-click="jogarCartas()" style="margin:5px">Cartas</button>
+       <br>
+       <h4 style="text-align:center; color:royalblue">Carta tirada:</h4><h5 style="text-align:center; color:#000">{{resultCartas}}</h5>
+   
+   </div>
+</script>
+<script type="text/ng-template" id="myModalContent4.html" style="color:#000">
+   <div class="modal-body" style="text-align:center">
+   <form ng-submit="setAnot(dataAnotacoes)">
+       <h3 style="color:royalblue; text-align:center">Anotações</h3>
+       <div class="form-group">
+         <label for="comment">Comment:</label>
+         <textarea class="form-control" rows="3" id="comment" ng-model="dataAnotacoes.textNotas"></textarea><br>
+         <div class="checkbox">
+           <label style="color: #000"><input type="checkbox" ng-model="dataAnotacoes.visivelJogadores" ng-true-value=1 ng-false-value=0>Vísivel para os jogadores</label>
+         </div>  
+         <button type="submit" class="btn btn-danger btn-md">Salvar anotação!</button>
+       </div>
+   </form>
+   </div>
+</script>
+<div class="col-xs-18 col-sm-6 col-md-12" ng-controller="AventuraCtrl"  ng-init="getFichaLogado(fichaIDLogado)">
+   <div style="text-align:left" class="col-xs-12">
+      <button type="submit" class="btn btn-danger btn-sm" onClick="javascript:history.go(-1);">Voltar</button><br>
+   </div>
+   <h1 style="text-align:center">Aventura: {{aventura.aventuraNome}}</h1>
+   <br>
+   <div style="text-align:center">
+      <a href="#" class="btn btn-warning btn-md" role="button" ng-click="openAnot()">+Anotações</a>
+      <br><br>
+   </div>
+   <form ng-submit="iniciarCombateJogador(formCombate)">
+      <div style="text-align:center" class="col-xs-12 col-sm-12 col-md-12">
+         <div class="bs-example">
+            <p>
+               <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+               Minha ficha
+               </button>
+            </p>
+            <div class="collapse" id="collapseExample" aria-expanded="false" style="height: 0px;">
+               <div>
+                  <h3>Minha ficha</h3>
+                  <div>
+                     <h5>Nome: {{fichaLogada[0].nomePers}}</h5>
+                     <h5>Classe: {{fichaLogada[0].classePers}}</h5>
+                     <h5>Raça: {{fichaLogada[0].racaPers}}</h5>
+                     <h5>Tendência: {{fichaLogada[0].tendPers}}</h5>
+                  </div>
+                  <button class="btn btn-danger collapsed" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                  Alterar meus pontos de vida
+                  </button>
+                  </p>
+                  <div class="collapse" id="collapseExample1" aria-expanded="false" style="height: 0px;">
+                     <div>
+                        <div>
+                           <h5>Pontos de vida atual: {{valorPV.valor}}</h5>
+                           <input type="number" name="awesome" ng-model="valorDoPV" style="color: #000">
+                           <button type="button" class="btn btn-warning btn-sm" ng-click="atualizarPV(valorDoPV, fichaIDLogado)">Atualizar PV</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <hr>
+      </div>
+      <div style="text-align:center" class="col-xs-12 col-sm-12 col-md-12">
+         <h4>Jogadores desta aventura</h4>
+         <div class="form-group">
+            <div ng-repeat="ficha in fichas">{{ficha.nomePers}}
+               <button type="button" class="btn btn-primary btn-sm" ng-click="open(ficha.fichaID)">+info</button>
+               <br>
+               <br>
+            </div>
+         </div>
+      </div>
+      <!--div style="text-align:center" class="col-xs-12 col-md-6">
+         <h4>Escolher os monstros</h4>
+         <hr>
+         <div class="form-group">
+             <div ng-repeat="monstro in monstros">
+                 <div class="radio">
+                     <input type="checkbox" name="awesome" ng-model="formCombate.tokenID[$index]" ng-true-value="'{{monstro.tokenID}}'" ng-false-value="undefined"> {{monstro.racaToken}} <a href="#" class="btn btn-warning btn-sm" role="button">editar</a>
+                     <button type="button" class="btn btn-primary btn-sm" ng-click="openToken($index)">+info</button>
+                 </div>
+             </div>
+         </div>
+         <br>
+         </div-->
+      <div style="text-align:center" class="col-xs-12">
+         <h4>Anotações do narrador</h4>
+         <div ng-repeat="anotacao in anotacoes">
+            <div ng-show="anotacao.visivelJogadores === 1" style="color: yellow">
+               <h5>{{anotacao.textNotas}}</h5>
+            </div>
+         </div>
+         <br>
+      </div>
+      <div style="text-align:center" class="col-xs-12">
+         <button type="submit" class="btn btn-danger btn-lg">Acompanhar combate!</button>
+         <button type="button" class="btn btn-primary btn-lg" ng-click="openTeste()">Teste</button>
+         <br>
+         <br>
+      </div>
+   </form>
+</div>

@@ -1,0 +1,145 @@
+<div class="col-xs-12 col-sm-6 col-md-12" ng-controller="CombateCtrl">
+   <div>
+      <script type="text/ng-template" id="myModalContent.html" style="color:#000">
+         <div class="modal-body">
+         <h4 style="color:#000; text-align:center">Clique "SIM" se deseja rodar o teste de iniciativa automaticamente ou "NÃO" caso deseje digitar os valores do dado manualmente.</h4>
+            <div style="text-align:center">
+             <button class="btn btn-primary" type="button" ng-click="ok()">Sim</button>
+             <button class="btn btn-warning" type="button" ng-click="cancel()">Não</button>
+             </div>
+         </div>
+      </script>
+
+      <script type="text/ng-template" id="myModalContent5.html" style="color:#000">
+         <div class="modal-body">
+         <h3 style="color:royalblue; text-align:center">Iniciativa sem dados</h3>
+         <form  ng-submit="calInic(valoresDados, $index)" >
+         <div ng-repeat="jogador in dataCombate">
+           
+             <div class="form-group" style="text-align:center">
+              <label>Popup Text:</label>
+              <input type="number" placeholder="Coloque aqui o valor do dado para o {{jogador.classetoken}} ({{jogador.racaToken}})" ng-model="valoresDados[$index]" class="form-control" style="text-align:center">
+            </div>         
+         </div>               
+         <input type="submit" id="submit" value="Calcular" />{{valoresDados}}
+          </form>
+      </script>
+      <script type="text/ng-template" id="myModalContent3.html" style="color:#000">
+         <div class="modal-body" style="text-align:center" ng-controller="CombateCtrl">
+             <h3 style="color:royalblue; text-align:center">Escolha um teste</h3>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,4)" style="margin:5px">Dado de 4</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,6)" style="margin:5px">Dado de 6</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,8)" style="margin:5px">Dado de 8</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,10)" style="margin:5px">Dado de 10</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,12)" style="margin:5px">Dado de 12</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,16)" style="margin:5px">Dado de 16</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,20)" style="margin:5px">Dado de 20</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,30)" style="margin:5px">Dado de 30</button>
+             <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,100)" style="margin:5px">Dado de 100</button>
+             <br>
+             <h3 style="text-align:center; color:royalblue">Valor tirado:</h3><h4 style="text-align:center; color:#000">{{resultDados}}</h4><hr>
+             <button type="button" class="btn btn-warning btn-sm" ng-click="jogarCartasCombate()" style="margin:5px">Cartas</button>
+             <br>
+             <h3 style="text-align:center; color:royalblue">Carta tirada:</h3><h4 style="text-align:center; color:#000">{{resultCartas}}</h4><hr>
+            <button type="button" class="btn btn-danger btn-sm" ng-click="jogarMoedaCombate()" style="margin:5px">Moeda</button>
+            <br>
+            <h3 style="text-align:center; color:royalblue">Moeda tirada:</h3><h4 style="text-align:center; color:#000">{{resultMoeda}}</h4>
+         
+         </div>
+      </script>
+      <!-- JOGADORES -->
+      <div style="text-align: center">
+         <form role="form" ng-submit="iniciarCombate()">
+            </br>
+            <h1 style="text-align:center">Combate</h1>
+            <br>
+            <accordion close-others="oneAtATime" class="col-md-5" id="paineljogadores">
+               <h4>JOGADORES</h4>
+               <accordion-group heading="{{jogador.nomeToken}} - Pontuação ({{jogador.iniciativaComDados}}) - {{dataC.indexOf(jogador) + 1}}º" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" ng-click="getFichaCombate(jogador.id, $index); getPvFirebase(jogador.id, jogador.pvMaxToken)" ng-repeat="jogador in dataC | filter:{ tipo: 'FICHA'}">
+                  <div>
+                     <h3 style="color:#000">{{jogador.nomeToken}} </h3>
+                  </div>
+                  <div class="form-group" style="text-align:center">
+                     <label>Ataque</label>
+                     <input type="hidden" ng-model="valorInicial" ng-init="valorInicial == pontosTotal$index"/>
+                     <input type="number" class="form-control" name="name" ng-model="ataque$index" min="0" max="100"><br>
+                     <button type="submit" ng-click="valorInicial=(valorInicial-ataque$index); atacarJog(valorInicial, jogador.pvMaxToken, jogador.id, jogador.nomeToken, ataque$index)" class="btn btn-danger btn-md">-Dano</button>
+                     <button type="submit" ng-click="valorInicial=(valorInicial+ataque$index); curarJog(valorInicial, jogador.pvMaxToken, jogador.id, jogador.nomeToken, ataque$index)" class="btn btn-info btn-md">+Cura</button>
+                     {{array[$index]}} <br/>
+                     <div>
+                        <h3 style="color:#000">{{valorInicial}} / {{jogador.pvToken}}</h3>
+                     </div>
+                     <div>
+                        <h5 style="color:navy">Classe: {{jogador.classetoken}} </h5>
+                     </div>
+                     <div>
+                        <h5 style="color:navy">Raça: {{jogador.racaToken}} </h5>
+                     </div>
+                     <div>
+                        <h5 style="color:navy">Ponto de Magia: {{jogador.pmToken}} </h5>
+                     </div>
+                     <div>
+                        <h5 style="color:navy">
+                        Último dado lançado pelo jogador: {{testeDadoJog.resultDados}} </h5>
+                        <h5 style="color:navy">
+                        Último carta lançada pelo jogador: {{testeCartasJog.resultCartas}} </h5>
+                        <h5 style="color:navy">
+                        Mensagem do jogador: {{textoJog.texto}} </h5>
+                     </div>
+                  </div>
+               </accordion-group>
+            </accordion>
+
+
+            <div class="col-md-2">
+               <h1>X</h1>
+            </div>
+
+            <!-- MONSTROS -->
+            <accordion close-others="oneAtATime" class="col-md-5" id="paineljogadores">
+               <h4>MONSTROS</h4>
+               <accordion-group heading="{{monstro.nomeToken}} - Pontuação ({{monstro.iniciativaComDados}}) - {{dataC.indexOf(monstro) + 1}}º" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" ng-click="getFichaCombate(monstro.id, $index)" ng-repeat="monstro in dataC | filter:{ tipo: 'TOKEN'}" panel-class="panel-danger">
+                  <div>
+                     <h3 style="color:#000">{{monstro.nomeToken}} </h3>
+                  </div>
+                  <div class="form-group" style="text-align:center">
+                     <label>Ataque</label>
+                     <input type="hidden" ng-model="pontosTotal$index" ng-init="pontosTotal$index = monstro.pvToken"/>
+                     <input type="number" class="form-control" name="name" ng-model="ataque$index" min="0" max="100"><br>
+                     <button type="submit" ng-click="pontosTotal$index=(pontosTotal$index-ataque$index); atacarToken(ataque$index, monstro.nomeToken)" class="btn btn-danger btn-md">-Dano</button>
+                     <button type="submit" ng-click="pontosTotal$index=(pontosTotal$index+ataque$index); curarToken(ataque$index, monstro.nomeToken)" class="btn btn-info btn-md">+Cura</button>
+                     {{array[$index]}} <br/>
+                     <div>
+                        <h3 style="color:#000">{{pontosTotal$index}} / {{monstro.pvToken}}</h3>
+                     </div>
+                  </div>
+                     <div>
+                        <h5 style="color:navy">Classe: {{monstro.classetoken}} </h5>
+                     </div>
+                     <div>
+                        <h5 style="color:navy">Raça: {{monstro.racaToken}} </h5>
+                     </div>
+                     <div>
+                        <h5 style="color:navy">Ponto de Magia: {{monstro.pmToken}} </h5>
+                     </div>
+               </accordion-group>
+            </accordion>
+
+            
+
+            <div class="col-md-12">
+               <input type="text" class="form-control" placeholder="Enviar mensagens para todos os jogadores" ng-model="textoFirebase" min="0" max="100"><br>
+               <button type="button" class="btn btn-warning btn-md" ng-click="enviarFB(textoFirebase)">Enviar mensagem</button>
+            </div>
+
+
+            <div class="col-md-12"><br>
+               <button type="submit" ng-click="voltaAventura()" class="btn btn-danger btn-block">Finalizar combate</button>
+               <button type="button" class="btn btn-primary btn-block" ng-click="openTesteCombate()">Teste</button><br><br>
+            </div>
+         </form>
+         </br></br>
+      </div>
+     
+   </div>
+</div>

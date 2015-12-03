@@ -1,0 +1,37 @@
+<br>
+<div class="col-xs-12 col-sm-6 col-md-12" ng-controller="CampanhaCtrl" >
+    <div style="text-align:left" class="col-xs-12">
+	<button type="submit" class="btn btn-danger btn-sm" onClick="javascript:history.go(-1);">Voltar</button><br>
+	</div>
+	<h1 style="text-align:center" class="ng-cloak">Campanha: {{campanhaNome}}</h1><br>
+ 	<div style="text-align:center">
+ 	<a href="/#/cadFicha" class="btn btn-primary btn-md" role="button">+Ficha</a>
+ 	<a href="/#/cadAventura" class="btn btn-success btn-md" role="button">+Aventura</a>
+ 	<a href="" class="btn btn-info btn-md" role="button">Convite</a>
+ 	<br><br></div>
+        <form ng-submit="iniciarAvent(formAventura)" >
+        <div style="text-align:center" class="col-md-6">
+	        <h4>Escolher Jogadores</h4><hr>
+	        <div class="form-group" style="text-align:left">
+	            <div ng-repeat="ficha in fichas">
+		         <input type="checkbox"  name="awesome"  ng-model="formAventura.fichaID[$index]" ng-true-value="'{{ficha.fichaID}}'" ng-false-value="" style="text-align:left; margin-left:45px"> {{ficha.nomePers}}
+		         </div> 
+	        </div>
+        </div>
+        <div style="text-align:center" class="col-md-6">
+	       <h4>Escolher aventura</h4><hr>
+	        <div class="form-group">
+	         <div ng-repeat="aventura in aventuras">
+	            <div class="radio" style="text-align:center">
+	                    <input type="radio" name="{{aventura.aventuraID}}" value="{{aventura.aventuraID}}" ng-model="formAventura.aventuraID" ng-required="!formAventura.aventuraID">
+	                     {{aventura.aventuraNome}}
+	            </div>
+	           </div>
+	        </div> 
+        </div>
+        <br><br>
+        <div style="text-align:center" class="col-md-12">
+        	<button type="submit" class="btn btn-danger btn-lg">Iniciar Aventura!</button><br><br><br>
+       	</div>
+       	</form>
+</div>

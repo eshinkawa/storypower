@@ -1,0 +1,93 @@
+    <div style="text-align:center; padding:0px">   <br> <div style="text-align:left" class="col-xs-12" ng-init="getVariacao()">
+    <button type="submit" class="btn btn-danger btn-sm" onClick="javascript:history.go(-1);">Voltar</button><br>
+    </div>
+
+    <div class="col-md-12" style="color:#fff">
+        <h2 style="text-align: center">Cadastro de Ficha</h2>
+        <div ng-show="error" class="alert alert-danger">{{error}}</div>
+        <form name="form" ng-submit="cadastrarFicha(formFicha)" role="form">
+            <div class="form-group" ng-class="{ 'has-error': form.nomePers.$dirty && form.nomePers.$error.required }">
+                <input type="text" name="nomePers" id="nomePers" class="form-control" placeholder="Nome do Personagem" ng-model="formFicha.ficha.nomePers" required />
+                <span ng-show="form.nomePers.$dirty && form.nomePers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.racaPers.$dirty && form.racaPers.$error.required }">
+                <input type="text" name="racaPers" id="racaPers" class="form-control" placeholder="Raça do Personagem" ng-model="formFicha.ficha.racaPers" required />
+                <span ng-show="form.racaPers.$dirty && form.racaPers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.classePers.$dirty && form.classePers.$error.required }">
+                <input type="text" name="classePers" id="classePers" class="form-control" placeholder="Classe do Personagem" ng-model="formFicha.ficha.classePers" required />
+                <span ng-show="form.classePers.$dirty && form.classePers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.nivelPers.$dirty && form.nivelPers.$error.required }">
+                <input type="number" name="nivelPers" id="nivelPers" class="form-control" placeholder="Nivel do Personagem" ng-model="formFicha.ficha.nivelPers" required />
+                <span ng-show="form.nivelPers.$dirty && form.nivelPers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.tendPers.$dirty && form.tendPers.$error.required }">
+                <input type="text" name="tendPers" id="tendPers" class="form-control" placeholder="Tendencia do Personagem" ng-model="formFicha.ficha.tendPers" required />
+                <span ng-show="form.tendPers.$dirty && form.tendPers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.generoPers.$dirty && form.generoPers.$error.required }">
+                <input type="text" name="generoPers" id="generoPers" class="form-control" placeholder="Gênero do Personagem" ng-model="formFicha.ficha.generoPers" required />
+                <span ng-show="form.generoPers.$dirty && form.generoPers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.idadePers.$dirty && form.idadePers.$error.required }">
+                <input type="number" name="idadePers" id="idadePers" class="form-control" placeholder="Idade do Personagem" ng-model="formFicha.ficha.idadePers" required />
+                <span ng-show="form.idadePers.$dirty && form.idadePers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.divinPers.$dirty && form.divinPers.$error.required }">
+                <input type="text" name="divinPers" id="divinPers" class="form-control" placeholder="Divindade seguida pelo Personagem" ng-model="formFicha.ficha.divinPers" required />
+                <span ng-show="form.divinPers.$dirty && form.divinPers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.tamPers.$dirty && form.tamPers.$error.required }">
+                <input type="number" name="divinPers" id="tamPers" class="form-control" placeholder="Tamanho do Personagem" ng-model="formFicha.ficha.tamPers" required />
+                <span ng-show="form.tamPers.$dirty && form.tamPers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.deslocPers.$dirty && form.deslocPers.$error.required }">
+                <input type="number" name="deslocPers" id="deslocPers" class="form-control" placeholder="Deslocamento do Personagem" ng-model="formFicha.ficha.deslocPers" required />
+                <span ng-show="form.deslocPers.$dirty && form.deslocPers.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<!--div class="form-group" ng-class="{ 'has-error': form.variacaoJogo.$dirty && form.variacaoJogo.$error.required }">
+                <input type="text" name="variacaoJogo" id="variacaoJogo" class="form-control" placeholder="Variação do Jogo" ng-model="formFicha.variacao.variacaoJogo" disabled />
+                <span ng-show="form.variacaoJogo.$dirty && form.variacaoJogo.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <!--select id="UserSelector" style="width: 100%; color: #000" ng-model="formFicha.variacao.variacaoJogo" placeholder="Escolha a variação do jogo" required>
+               <option value=''>-- Escolha uma variação de jogo --</option>
+              <option ng-repeat="variacao in variacoes"  value="{{variacao.variavelHabil}}">{{variacao.variavelHabil}}</option>
+            </select--> <!--br><br-->
+			<div class="form-group" ng-class="{ 'has-error': form.pvAtual.$dirty && form.pvAtual.$error.required }">
+                <input type="number" name="pvAtual" id="pvAtual" class="form-control" placeholder="Pontos de Vida Atual do Jogo" ng-model="formFicha.pvpm.pvAtual" required />
+                <span ng-show="form.pvAtual.$dirty && form.pvAtual.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.pvMax.$dirty && form.pvMax.$error.required }">
+                <input type="number" name="pvMax" id="pvMax" class="form-control" placeholder="Pontos de Vida Máximo" ng-model="formFicha.pvpm.pvMax" required />
+                <span ng-show="form.pvMax.$dirty && form.pvMax.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.pmAtual.$dirty && form.pmAtual.$error.required }">
+                <input type="number" name="pmAtual" id="pmAtual" class="form-control" placeholder="Pontos de Magia Atual" ng-model="formFicha.pvpm.pmAtual" required />
+                <span ng-show="form.pmAtual.$dirty && form.pmAtual.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.pmMax.$dirty && form.pmMax.$error.required }">
+                <input type="number" name="pmMax" id="pmMax" class="form-control" placeholder="Pontos de Magia Máximo" ng-model="formFicha.pvpm.pmMax" required />
+                <span ng-show="form.pmMax.$dirty && form.pmMax.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.totMonet.$dirty && form.totMonet.$error.required }">
+                <input type="number" name="totMonet" id="totMonet" class="form-control" placeholder="Total Monetário" ng-model="formFicha.dinheiro.totMonet" required />
+                <span ng-show="form.totMonet.$dirty && form.totMonet.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.totOuro.$dirty && form.totOuro.$error.required }">
+                <input type="number" name="totOuro" id="totOuro" class="form-control" placeholder="Total de Ouro" ng-model="formFicha.dinheiro.totOuro" required />
+                <span ng-show="form.totOuro.$dirty && form.totOuro.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.totPrata.$dirty && form.totPrata.$error.required }">
+                <input type="number" name="totPrata" id="totPrata" class="form-control" placeholder="Total de Prata" ng-model="formFicha.dinheiro.totPrata" required />
+                <span ng-show="form.totPrata.$dirty && form.totPrata.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+			<div class="form-group" ng-class="{ 'has-error': form.totL.$dirty && form.totL.$error.required }">
+                <input type="number" name="totL" id="totL" class="form-control" placeholder="Total de L" ng-model="formFicha.dinheiro.totL" required />
+                <span ng-show="form.totL.$dirty && form.totL.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div style="text-align: center"><button type="submit" class="btn btn-danger btn-md">Cadastrar</button></div><br><br>
+        </form>
+    </div>
+    </div>
+

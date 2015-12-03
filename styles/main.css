@@ -1,0 +1,188 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.panel-default > .panel-heading{
+
+  color: white;
+  background-color: royalblue;
+  border-color: #ddd;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+html{
+
+  background: url(../images/BG.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+        
+}
+
+a{
+  color: #fff;
+  text-decoration: underline;
+}
+
+a:hover{
+
+  color: #fff;
+  text-decoration: none;
+
+}
+
+.bg { 
+}
+
+.thumbnail:hover{
+
+  background-color: RoyalBlue;
+  color: #fff;
+
+}
+
+#thumbnailJog{
+
+  background-color: yellow;
+  color: #000;
+}
+
+#thumbnailJog:hover{
+  background-color: RoyalBlue;
+  color: #fff;
+
+}
+
+
+.container{
+
+  padding: 0;
+  border: 0px solid;
+  background:rgba(0,51,102,0.9);
+  margin-top: 40px
+}
+
+
+
+body {
+  padding: 0;
+  background-color: inherit !important;
+  color: #fff;
+  font-family: 'Quicksand';
+
+
+}
+
+    /* quicksand-700 - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/quicksand-v5-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Quicksand Bold'), local('Quicksand-Bold'),
+       url('../fonts/quicksand-v5-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/quicksand-v5-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/quicksand-v5-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/quicksand-v5-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/quicksand-v5-latin-700.svg#Quicksand') format('svg'); /* Legacy iOS */
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+  /* Make the masthead heading the same height as the navigation */
+}
+
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+
+
+@media screen and (max-width: 767px){
+
+.container{
+
+  padding: 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 0px;
+  border-right: 0px;
+  background:rgba(0,51,102,0.9);
+  margin-top: 40px
+}
+
+
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+
+  }
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

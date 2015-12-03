@@ -1,0 +1,30 @@
+    <div style="text-align:center; padding:0px" ng-init="getVariacao()">
+<br>
+    <div class="col-md-12" style="color:#fff">
+    <div style="text-align:left" class="col-xs-12">
+    <button type="submit" class="btn btn-danger btn-sm" onClick="javascript:history.go(-1);">Voltar</button><br>
+    </div>
+        <h2 style="text-align: center">Cadastro de Campanha</h2>
+        <form name="form" ng-submit="cadastraCampanha(formCampanha)" role="form">
+            <div class="form-group" ng-class="{ 'has-error': formCampanha.campanhaNome.$dirty && formCampanha.campanhaNome.$error.required }">
+                <label for="campanhaNome">Nome da Campanha</label>
+                <input type="text" name="campanhaNome" id="campanhaNome" class="form-control" ng-model="formCampanha.campanhaNome" required />
+                <span ng-show="formCampanha.campanhaNome.$dirty && formCampanha.campanhaNome.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formCampanha.campanhaDesc.$dirty && formCampanha.campanhaDesc.$error.required }">
+                <label for="campanhaDesc">Descrição da Campanha</label>
+                <input type="text" name="campanhaDesc" id="campanhaDesc" class="form-control" ng-model="formCampanha.campanhaDesc" required />
+                <span ng-show="formCampanha.campanhaDesc.$dirty && formCampanha.campanhaDesc.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <select id="UserSelector" style="width: 100%; color: #000" ng-model="formCampanha.variacaoJogo" placeholder="Escolha a variação do jogo" required>
+               <option value=''>-- Escolha uma variação de jogo --</option>
+
+              <option ng-repeat="variacao in variacoes"  value="{{variacao.variavelHabil}}">{{variacao.variavelHabil}}</option>
+            </select>
+            <br><br>
+            <div style="text-align: center"><button type="submit" class="btn btn-danger btn-md">Adicionar Campanha</button></div><br><br>
+
+        </form>
+    </div>
+    </div>
+

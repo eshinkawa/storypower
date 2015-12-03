@@ -1,0 +1,31 @@
+<br>
+<div class="col-xs-12 col-sm-6 col-md-12" ng-controller="CampanhasCtrl">
+<h1 style="text-align:center">Campanhas</h1><br>
+
+ <div  style="text-align:center"><a href="/#/cadCampanha" class="btn btn-default btn-md" role="button">+Campanha</a><br><br></div>
+
+<h3 style="text-align:center">Campanhas como mestre</h3>
+<div ng-repeat="campanha in campanhas | filter:{ regCabecalho_usrID: 'MESTRE' }" style="text-align:center" id="clicaCampanha"> 
+  <div class="thumbnail" ng-click="goCampanha(campanha.campanhaID, campanha.campanhaNome, campanha.variacaoJogo)" id="clicaCampanha">
+      <div class="caption" id="clicaCampanha">
+        <h3 id="clicaCampanha">{{campanha.campanhaNome}}</h3>
+        <h5 id="clicaCampanha">{{campanha.variacaoJogo}}</h4>
+        <h5 id="clicaCampanha">{{campanha.campanhaDesc}}</h4>
+      </div>
+  </div>
+</div>
+
+<hr>
+
+<h3 style="text-align:center">Campanhas como jogador</h3>
+<div ng-repeat="campanha in campanhas | filter:{ regCabecalho_usrID: 'JOGADOR'}" style="text-align:center"> 
+  <div class="thumbnail" ng-click="goCampanhaJog(campanha.campanhaID, campanha.campanhaNome)" id="thumbnailJog">
+      <div class="caption" id="clicaCampanha">
+        <h3 id="clicaCampanha">{{campanha.campanhaNome}}</h3>
+        <h5 id="clicaCampanha">{{campanha.variacaoJogo}}</h4>
+        <h5 id="clicaCampanha">{{campanha.campanhaDesc}}</h4>
+      </div>
+  </div>
+</div>
+
+</div>

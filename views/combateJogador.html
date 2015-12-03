@@ -1,0 +1,89 @@
+<script type="text/ng-template" id="myModalContent55.html" style="color:#000">
+    <div class="modal-body" style="text-align:center">
+        <h3 style="color:royalblue; text-align:center">Escolha um teste</h3>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,4)" style="margin:5px">Dado de 4</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,6)" style="margin:5px">Dado de 6</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,8)" style="margin:5px">Dado de 8</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,10)" style="margin:5px">Dado de 10</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,12)" style="margin:5px">Dado de 12</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,16)" style="margin:5px">Dado de 16</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,20)" style="margin:5px">Dado de 20</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,30)" style="margin:5px">Dado de 30</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="rolarDadosCombate(1,100)" style="margin:5px">Dado de 100</button>
+        <br>
+        <h3 style="text-align:center; color:royalblue">Valor tirado:</h3><h4 style="text-align:center; color:#000">{{resultDados}}</h4><hr>
+        <button type="button" class="btn btn-warning btn-sm" ng-click="jogarCartasCombate()" style="margin:5px">Cartas</button>
+        <br>
+        <h3 style="text-align:center; color:royalblue">Carta tirada:</h3><h4 style="text-align:center; color:#000">{{resultCartas}}</h4><hr>
+            <button type="button" class="btn btn-danger btn-sm" ng-click="jogarMoedaCombate()" style="margin:5px">Moeda</button>
+            <br>
+            <h3 style="text-align:center; color:royalblue">Moeda tirada:</h3><h4 style="text-align:center; color:#000">{{resultMoeda}}</h4>
+    </div>
+</script>
+
+<div class="col-xs-12 col-sm-6 col-md-12">
+   <div>
+      <script type="text/ng-template" id="myModalContent.html" style="color:#000">
+         <div class="modal-body">
+         <h4 style="color:#000; text-align:center">Clique "SIM" se deseja rodar o teste de iniciativa automaticamente ou "NÃO" caso deseje digitar os valores do dado manualmente.</h4>
+            <div style="text-align:center">
+             <button class="btn btn-primary" type="button" ng-click="ok()">Sim</button>
+             <button class="btn btn-warning" type="button" ng-click="cancel()">Não</button>
+             </div>
+         </div>
+      </script>
+      <br><br>
+      <h1 style="text-align:center">Status do combate</h1>
+      <br>
+      <div style="text-align:center">
+         <div
+            round-progress
+            max=profile.valorPV
+            current=profile.valor
+            color="royalblue"
+            bgcolor="#FF0000"
+            radius="100"
+            stroke="20"
+            semi="false"
+            rounded="false"
+            clockwise="true"
+            responsive="false"
+            duration="800"
+            animation="easeInOutQuart"> </div>
+         <h2 style="margin-top:-116px">{{profile.valor}} / {{profile.valorPV}}</h2>
+         <br><br><br><br>
+         <h1 ng-if="profile.valor <= 0" style="color: red">Morto</h1>
+         <h1 ng-if="profile.valor/profile.valorPV < 0.2 && profile.valor > 0" style="color: red">Alerta: Pontos de vida baixo</h1>
+      </div><br>
+
+      <h4 style="text-align:center">Último dado jogado pelo mestre: {{testeDados.resultDados}}<br>Última carta selecionada pelo mestre: {{testeCartas.resultCartas}}<br>Último lado de moeda tirado pelo mestre: {{testeMoeda.resultMoeda}}<br><br>Mensagem do mestre: {{textoMestre.texto}}<br><br>Status dos tokens: {{statusToken.texto}}<br><br>
+      Status dos jogadores: {{statusJog.texto}}</h4>
+
+      <accordion close-others="oneAtATime" class="col-md-12" id="paineljogadores">
+         <accordion-group heading="{{jogador.nomeToken}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" ng-repeat="jogador in dataCombate" style="text-align:center">
+            <div>
+               <h5 style="color:navy">
+               Nome: {{jogador}} </h35>
+            </div>
+            <div>
+               <h5 style="color:navy">Classe: {{jogador.classePers}} </h5>
+            </div>
+            <div>
+               <h5 style="color:navy">Raça: {{jogador.racaPers}} </h5>
+            </div>
+            <!--div><h5 style="color:navy">Ponto de Magia: {{jogador.pmAtual}} </h5></div-->   
+         </accordion-group>
+      </accordion>
+
+         <div style="text-align:center" class="col-md-12">
+            <input type="text" class="form-control" ng-model="textoFirebase" min="0" max="100"><br>
+            <button type="button" class="btn btn-warning btn-md" ng-click="enviarFB(textoFirebase)">Enviar mensagem para o mestre</button>
+         </div>
+
+
+         <div style="text-align:center" class="col-md-12"><br>
+         <button type="submit" class="btn btn-danger btn-lg" ng-click="voltarAventuraJog()">Retorna para aventura</button>
+         <button type="button" class="btn btn-primary btn-lg" ng-click="openTesteCombate()">Teste</button><br><br><br>
+         </div>
+   </div>
+</div>

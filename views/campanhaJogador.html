@@ -1,0 +1,46 @@
+<br>
+<div class="col-xs-12 col-sm-6 col-md-12" ng-controller="CampanhaCtrl" >
+    <div style="text-align:left" class="col-xs-12">
+	<button type="submit" class="btn btn-danger btn-sm" onClick="javascript:history.go(-1);">Voltar</button><br>
+	</div>
+	<h1 style="text-align:center">Campanha: {{campanhaNome}}</h1><br>
+ 	<div style="text-align:center">
+ 	</div>
+        <form ng-submit="iniciarAventJog(formAventura)" >
+            <div style="text-align:center">
+                <a href="#" class="btn btn-primary btn-md" role="button">Editar Ficha</a><br><br>
+            </div>
+        <div style="text-align:center" class="col-md-6">
+	        <h4>Jogadores na {{campanhaNome}}</h4><hr>
+            <accordion close-others="oneAtATime" id="paineljogadores">
+               <accordion-group heading="{{ficha.nomePers}}" ng-click="getInfoJog(ficha.fichaID)" ng-repeat="ficha in fichas">
+                 <h3 style="color:#000">{{jog.nomePers}}</h3>
+                    <h5 style="color:navy">Nível: {{jog.nomePers}} </h5>
+                    <h5 style="color:navy">Classe: {{jog.classePers}} </h5>
+                    <h5 style="color:navy">Raça: {{jog.racaPers}} </h5>
+                    <h5 style="color:navy">Ponto de Vida: {{jog.pvAtual}} </h5>
+                    <h5 style="color:navy">Ponto de Magia: {{jog.pmAtual}} </h5>
+                    <h5 style="color:navy">Tendência: {{jog.classePers}}</h5>
+                    <h5 style="color:navy">totMonet {{jog.totMonet}}</h5>
+                    <h5 style="color:navy">totOuro: {{jog.totOuro}}</h5>
+                    <h5 style="color:navy">totPrata: {{jog.totPrata}}</h5>
+               </accordion-group>
+            </accordion>
+        </div>
+        <div style="text-align:center" class="col-md-6">
+	       <h4>Escolher aventura</h4><hr>
+	        <div class="form-group">
+	         <div ng-repeat="aventura in aventuras">
+	            <div class="radio" style="text-align:center">
+	                    <input type="radio" name="{{aventura.aventuraID}}" value="{{aventura.aventuraID}}"  ng-model="formAventura.aventuraID" ng-required="!formAventura.aventuraID">
+	                     {{aventura.aventuraNome}} <span ng-if="aventura.aventuraSituacao = 1" style="color: yellow">(Aventura ativa)</span>
+	            </div>
+	           </div>
+	        </div> 
+        </div>
+        <br><br>
+        <div style="text-align:center" class="col-md-12">
+        	<button type="submit" class="btn btn-danger btn-lg">Iniciar Aventura!</button><br><br><br>
+       	</div>
+       	</form>
+</div>

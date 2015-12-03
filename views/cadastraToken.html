@@ -1,0 +1,52 @@
+<div style="text-align:center; padding:0px" ng-init="">
+<br>
+    <div class="col-md-12" style="color:#fff">
+    <div style="text-align:left" class="col-xs-12">
+    <button type="submit" class="btn btn-danger btn-sm" onClick="javascript:history.go(-1);">Voltar</button><br>
+    </div>
+        <h2 style="text-align: center">Cadastro da Token</h2>
+        <form name="form" ng-submit="cadastraToken(formToken)" role="form">
+            <div class="form-group" ng-class="{ 'has-error': formToken.nomeToken.$dirty && formToken.nomeToken.$error.required }">
+                <input type="text" name="nomeToken" id="nomeToken" class="form-control" placeholder="Nome" ng-model="formToken.nomeToken" required />
+                <span ng-show="formToken.nomeToken.$dirty && formToken.nomeToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.racaToken.$dirty && formToken.racaToken.$error.required }">
+                <input type="text" name="racaToken" id="racaToken" class="form-control" placeholder="Raça" ng-model="formToken.racaToken" required />
+                <span ng-show="formToken.racaToken.$dirty && formToken.racaToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.classeToken.$dirty && formToken.classeToken.$error.required }">
+                <input type="text" name="classeToken" id="classeToken" class="form-control" placeholder="Classe" ng-model="formToken.classeToken" required />
+                <span ng-show="formToken.classeToken.$dirty && formToken.classeToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.pvToken.$dirty && formToken.pvToken.$error.required }">
+                <input type="number" name="pvToken" id="pvToken" class="form-control" placeholder="Pontos de Vida" ng-model="formToken.pvToken" required />
+                <span ng-show="formToken.pvToken.$dirty && formToken.pvToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.pmToken.$dirty && formToken.pmToken.$error.required }">
+                <input type="number" name="pmToken" id="pvToken" class="form-control" placeholder="Pontos de Magia" ng-model="formToken.pmToken" required />
+                <span ng-show="formToken.pmToken.$dirty && formToken.pmToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.descToken.$dirty && formToken.descToken.$error.required }">
+                <input type="text" name="descToken" id="pvToken" class="form-control" placeholder="Descriçao" ng-model="formToken.descToken" required />
+                <span ng-show="formToken.descToken.$dirty && formToken.descToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group">
+                <input type="text" name="imgToken" id="pvToken" class="form-control" placeholder="URL do avatar" ng-model="formToken.imgToken"/>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.pvMaxToken.$dirty && formToken.pvMaxToken.$error.required }">
+                <input type="number" name="pvMaxToken" id="pvToken" class="form-control" placeholder="Pontos de Vida Maximo" ng-model="formToken.pvMaxToken" required />
+                <span ng-show="formToken.pvMaxToken.$dirty && formToken.pvMaxToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.pmMaxToken.$dirty && formToken.pmMaxToken.$error.required }">
+                <input type="number" name="pmMaxToken" id="pvToken" class="form-control" placeholder="Pontos de Magia Maximo" ng-model="formToken.pmMaxToken" required />
+                <span ng-show="formToken.pmMaxToken.$dirty && formToken.pmMaxToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formToken.iniToken.$dirty && formToken.iniToken.$error.required }">
+                <input type="number" name="iniToken" id="pvToken" class="form-control" placeholder="Iniciativa" ng-model="formToken.iniToken" required />
+                <span ng-show="formToken.iniToken.$dirty && formToken.iniToken.$error.required" class="help-block">Campo obrigatório</span>
+            </div><br><br>
+            <div style="text-align: center"><button type="submit" class="btn btn-danger btn-md">Adicionar Token</button></div><br><br>
+
+        </form>
+    </div>
+    </div>

@@ -1,0 +1,13 @@
+<div class="modal-body" style="text-align:center">
+	<form ng-submit="setAnot(dataAnotacoes)">
+	    <h2 style="text-align:center">Anotações</h2>
+	    <div class="form-group">
+	      <label for="comment">Comentário:</label>
+	      <textarea class="form-control" rows="3" id="comment" ng-model="dataAnotacoes.textNotas"></textarea><br>
+	      <div class="checkbox">
+	        <label><input type="checkbox" ng-model="dataAnotacoes.visivelJogadores" ng-true-value=1 ng-false-value=0>Vísivel para os jogadores</label>
+	      </div>  
+	      <button type="submit" class="btn btn-danger btn-md">Salvar anotação!</button>
+	    </div>
+	</form>
+</div>
